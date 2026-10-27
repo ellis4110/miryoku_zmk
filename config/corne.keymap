@@ -1,9 +1,15 @@
-// Copyright 2021 Manna Harbour
-// https://github.com/manna-harbour/miryoku
-
 #include "../miryoku/custom_config.h"
 #include "../miryoku/mapping/42/corne.h"
 #include "../miryoku/miryoku.dtsi"
+
+#define THUMB_MOD(NAME, POSITION, THUMB, MODIFIER) \
+    NAME { \
+        timeout-ms = <50>; \
+        key-positions = <POSITION THUMB>; \
+        bindings = <&kp MODIFIER>; \
+        layers = <0>; \
+    };
+
 / {
     combos {
         compatible = "zmk,combos";
@@ -14,11 +20,18 @@
             bindings = <&studio_unlock>;
         };
 
-        combo_f_tab_shift {
-            timeout-ms = <50>;
-            key-positions = <16 38>;
-            bindings = <&kp LSHFT>;
-            layers = <0>;
-        };
+        // Left hand + Tab
+        THUMB_MOD(combo_a_tab_gui,     13, 38, LGUI)
+        THUMB_MOD(combo_s_tab_alt,     14, 38, LALT)
+        THUMB_MOD(combo_d_tab_ctrl,    15, 38, LCTRL)
+        THUMB_MOD(combo_f_tab_shift,   16, 38, LSHFT)
+
+        // Right hand + Enter
+        THUMB_MOD(combo_j_enter_shift, 19, 39, LSHFT)
+        THUMB_MOD(combo_k_enter_ctrl,  20, 39, LCTRL)
+        THUMB_MOD(combo_l_enter_alt,   21, 39, LALT)
+        THUMB_MOD(combo_quote_enter_gui, 22, 39, LGUI)
     };
 };
+
+#undef THUMB_MOD
