@@ -13,7 +13,6 @@
             key-positions = <0 11>;
             bindings = <&studio_unlock>;
         };
-    };
 
         combo_f_tab_shift {
             timeout-ms = <50>;
@@ -21,4 +20,5 @@
             bindings = <&kp LSHFT>;
             layers = <0>;
         };
+    };
 };
